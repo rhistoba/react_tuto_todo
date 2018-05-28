@@ -20,8 +20,12 @@ class App extends Component {
 
   addTodo(title) {
     const { tasks, uniqueId } = this.state;
-    tasks.push({ title, id: uniqueId });
-    this.setState({ tasks, uniqueId: uniqueId+1 });
+    // tasks.push({ title, id: uniqueId });
+    // this.setState({ tasks, uniqueId: uniqueId+1 });
+
+    // pushはstateを直接変更してしまうので、concatを使う。
+    const newTasks = tasks.concat({ title, id: uniqueId });
+    this.setState({ tasks: newTasks, uniqueId: uniqueId+1  });
   }
 
   resetTodo() {
